@@ -1,0 +1,53 @@
+$(function(){
+    (function(){
+//左边小图片左右按钮
+      // 查找触发事件的元素
+      var $left=$("div.left>div.l_tu>div.xiang_left")
+      var $right=$("div.left>div.l_tu>div.xiang_right")
+
+
+
+
+
+
+
+
+//商品详情 规格参数   包装与售后   用户评价 的固定定位
+        // 查找触发事件的元素
+        $("window").scroll(function(){
+            var $h=$(this).scrollTop();//获得滚动条距离top的高度
+            if($h>800){
+                $(".gd").addClass("Fixed");
+            }else{
+                $(".gd").removeClass("Fixed")
+            }
+        })
+//购物车按钮前的数字
+        // 查找触发事件的元素,并为其绑定单击事件.
+        var $btns=$(".u8>li>.jiajian")
+        $btns.on("click",function(){
+            var $span=$(".u8>li>span")
+            var n=parseInt($span.html())
+            if($(this).html()=="+"){
+                n+=1;
+            }else if(n>1){
+                n-=1;
+            }
+            $span.html(n);
+        })
+
+//手机详情页参数详情
+        //查找触发事件的元素以及绑定点击事件
+        $("[data-toggle=up]").on("click",function(){
+            //查找要修改的元素
+            var $zt=$("div.zt");
+            //如果要修改的元素是隐藏的就让他显示
+            if($zt.is(":hidden")){
+                $zt.show(2000);
+                $("[data-toggle=up]").html("收起参数详情")
+            }else{
+                $zt.hide(2000);
+            }
+        })
+    })()
+})
